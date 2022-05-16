@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-
-
 class app extends Component {
     constructor(props){
         super(props)
@@ -73,7 +71,7 @@ const options = {
     headers: {
       'content-type': 'application/json',
       'X-RapidAPI-Host': 'solve-sudoku.p.rapidapi.com',
-      'X-RapidAPI-Key': 'fd80f2f77dmsh45f7ca41f5a4876p1c58aejsnf02de5018953'
+      'X-RapidAPI-Key': `${process.env.REACT_APP_API_KEY}`
     },
     data: `{"puzzle": "${positionsdata}"}`
   };

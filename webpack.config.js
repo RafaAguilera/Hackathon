@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+require('dotenv').config({ path: './.env' });
 
 module.exports = {
   context: path.join(__dirname, '/src'),
@@ -19,17 +21,18 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
 
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loaders: ['babel-loader'],
-      },
-      {
-        test: /\.html$/,
-        loader: 'file?name=[name].[ext]',
-      },
-    ],
+  plugins: [new webpack.DefinePlugin({
+    'process.env': JSON.stringify(process.env)})],
+
+    module: {
+      rules: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+      
+      }, ]
+  
+  
+    
   },
 };
